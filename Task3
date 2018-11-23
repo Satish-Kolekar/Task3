@@ -1,0 +1,133 @@
+<# 3.1) Provide below output using loops 
+[Char](65) Gives an output as "A"
+Dispaly the output from A to Z using loops and 
+[CHar](66) (Convert ASCII Value to Char) 
+Output should be like below
+A
+B
+C
+.
+.
+Z
+#>
+For($Test=0;$Test -lt 26;$Test++)
+  {
+   [char](65 + $test)
+                     }
+
+<# 3.2) Need an output as below for each service your pc have.
+"The display name of the service BITS is background intelligent Transfer service"
+    
+PSUDOCODE
+1) Set a variable for getting service
+Use Foreach Loop
+    #>
+
+$services= Get-Service
+Foreach($service in $services)
+
+     { 
+     Write-Host "The display name of the service $($service.Name)is $($service.DisplayName)"
+                            } 
+ 
+<#
+Create a csv file with the name,password as columns, import that csv and create local user using that
+PSudoCode
+1)create a csv file with name and password
+2)get the content of csv file
+3) Stored it in variable
+4)For each loop
+
+#>
+
+New-Item -Path "C:\NTMS" -Name Username.CSV -ItemType File
+.\Desktop\NTMS\Username.CSV
+$users=Get-Content C:\NTMS\Username.CSV
+Foreach($user in $users)
+
+{
+
+$secureString=ConvertTo-SecureString $user.Password -AsPlainText -Force
+
+new-Localuser -name $user.UserName -password $secureString
+
+}
+
+
+#>
+
+<#
+4) Create a script which can delete the files only *.log from "C:\Demo\Files" Location
+Psudocode
+get the content from the file
+Store in variable
+Foreach ($temp in $inCollection)
+
+{
+Remove the item *.log files from the folder
+}
+
+#>
+$a=0
+$b=10
+
+for($a=0; $a -le $b; $a++)
+
+{
+New-Item -Path "C:\Test\Demo\Files" -Name "Test($a).txt" -ItemType File
+      }
+
+
+for($a=0; $a -le $b; $a++)
+
+{
+New-Item -Path "C:\Test\Demo\Files" -Name "Log($a).Log" -ItemType File
+      }
+
+$Files=Get-ChildItem -Path "C:\Test\Demo\Files"
+
+Foreach($File in $Files)
+
+{ 
+Remove-Item -Path "C:\Users\!TKRB\Desktop\Demo\Files\*.txt" 
+
+}
+  
+<# 5) I will provide first number and last number. Need an output as if number is odd or even.
+
+$firstnumber=1
+$LastNumber=4
+
+I need output like below
+Number 1 is odd
+Number 2 is even
+Number 3 is odd
+Number 4 is even
+
+PsudoCode
+Define a variable to get the first number
+Define a variable to get the second number
+Write output as number is odd or even
+
+#>
+
+[int]$FirstNumber= Read-host -Prompt "Enter the First Number"
+[int]$LastNumber= Read-Host -Prompt "Enter the Last Number"
+
+
+For($FirstNumber=1;$FirstNumber -le $LastNumber;$FirstNumber++)
+
+{   
+
+If($FirstNumber -eq 0)
+
+{Even number case}
+
+Else
+
+{odd number case}
+
+Write-Host "Number is $FirstNumber is"
+
+
+}
